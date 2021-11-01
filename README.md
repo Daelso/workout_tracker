@@ -7,7 +7,7 @@
 ## Description:
 This project was quite difficult at the start as there are many moving parts to wrap my head around. Once things clicked, everything fell into place and I was able to add the required functionality to the site. I now have a better idea of MongoDB CRUD works. I wish I could've made the post and update requests async but I could not get them to work despite a few different attempts. This was also a crash course in learning to deploy a MongoDB database through heroku. Thankfully, the included tutorial was quite helpful. 
 
-![Demo photo](https://i.gyazo.com/493e6c91ed6d0c769ef5ddbff8841e54.png)
+![Demo photo](https://i.gyazo.com/2876b38aab14d28db38afb02f9e04619.png)
 
 
 ## Table of Contents
