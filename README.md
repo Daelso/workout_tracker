@@ -1,61 +1,50 @@
-# Unit 18 Nosql Homework: Workout Tracker
+# Title: 18 Nosql workout tracker
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+![badge](https://img.shields.io/badge/license-MIT-darkred) [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com) 
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 
-## User Story
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+## Description:
+This project was quite difficult at the start as there are many moving parts to wrap my head around. Once things clicked, everything fell into place and I was able to add the required functionality to the site. I now have a better idea of MongoDB CRUD works. I wish I could've made the post and update requests async but I could not get them to work despite a few different attempts. This was also a crash course in learning to deploy a MongoDB database through heroku. Thankfully, the included tutorial was quite helpful. 
 
-## Business Context
+![Demo photo](https://i.gyazo.com/493e6c91ed6d0c769ef5ddbff8841e54.png)
 
-A consumer will reach their fitness goals more quickly when they track their workout progress.
 
-## Acceptance Criteria
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Questions](#questions)
+- [Deployment](#deployment)
 
-When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
+## Installation Instructions:
 
-The user should be able to:
+This requires a number of npm modules. Open the terminal and begin with ```npm init``` followed by ```npm i``` to hopefully automatically install all required dependencies. You will need to deploy your own MongoDB database through Atlas and attach the required env variables to your heroku deployment.
 
-  * Add exercises to the most recent workout plan.
+Run the program by opening your terminal in the main folder and typing ```npm start```
 
-  * Add new exercises to a new workout plan.
+## Usage:
 
-  * View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
+For tracking resistance and cardio workouts online with a MongoDB database.
 
-  * View the total duration of each workout from the past seven workouts on the `stats` page.
+## Contributing:
 
-> **Important:** Look into using a MongoDB aggregate function to dynamically add up and return the total duration for each workout. Check out the [MongoDB documentation on the $addFields](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/), the [MongoDB documentation on the $sum operator](https://docs.mongodb.com/manual/reference/operator/aggregation/sum/), and the [Mongoose documentation on aggregate functions](https://mongoosejs.com/docs/api.html#aggregate_Aggregate) to learn how it can be accomplished.
+Want to contriubte? Here's the guidelines: None at the moment!
 
-To deploy an application with a MongoDB database to Heroku, you'll need to set up a MongoDB Atlas account and connect a database from there to your application. Be sure to use the following guides for support:
 
-  * [Set Up MongoDB Atlas](../04-Important/MongoAtlas-Setup.md)
+## License:
 
-  * [Deploy with Heroku and MongoDB Atlas](../04-Important/MongoAtlas-Deploy.md)
+This application is covered under the MIT license. 
 
-## Commit Early and Often
+## My Github Account:
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for the following two reasons:
+  Click here: https://github.com/Daelso
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+## Questions:
 
-2. Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
-
-Follow these guidelines for committing:
-
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
-
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
-
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
-
-* Test your application before you commit to ensure functionality at every step in the development process.
-
-We want you to have well over 200 commits by graduation, so commit early and often!
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL to the deployed application
-
-* The URL to the GitHub repository
+  Feel free to email me at: cmurtau@g.clemson.edu
+  
+## Deployment: 
+https://fitness-tracker-penn.herokuapp.com/?id=6180677d9b90f70016d7b318
