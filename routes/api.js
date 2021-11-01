@@ -5,7 +5,7 @@ const router = require("express").Router();
 // GET Request for getting all workouts
 router.get("/api/workouts", async(req, res) => {
 	try{
-	const findAllWorkouts = await db.Workout.find({}).sort({ date: -1})
+	const findAllWorkouts = await db.Workout.find({}).sort({ date: -1}) //descending sort
 
 		res.json(findAllWorkouts);
 		
@@ -18,7 +18,7 @@ router.get("/api/workouts", async(req, res) => {
 // GET request for the stats page.
 router.get("/api/workouts/range", async (req, res) => {
 try{
-	const findWorkoutRange = await db.Workout.find({}).sort({ date: -1})
+	const findWorkoutRange = await db.Workout.find({}).sort({ date: -1}) //descending sort 
 
 			res.json(findWorkoutRange);
 		}
@@ -29,8 +29,8 @@ try{
 });
 
 router.post("/api/workouts", (req, res) => {
-	db.Workout.create(req.body)
-	  .then((workout) => {
+	db.Workout.create(req.body) //create from req.body
+	  .then((workout) => { //pass info through to json
 		res.status(201).json(workout);
 	  })
 	  .catch((err) => {
@@ -39,17 +39,17 @@ router.post("/api/workouts", (req, res) => {
   });
 
 router.put("/api/workouts/:id", async (req, res) => {
-	const id = req.params.id;
-	const body = req.body;
+	const id = req.params.id; //defines workout ID
+	const body = req.body; //defines the req.body
 	db.Workout.updateOne(
-	  { _id: id },
+	  { _id: id }, //update by id
 	  {
-		$push: {
+		$push: { //push our updated exercise into exercises array
 		  exercises: { ...body },
 		},
 	  }
 	)
-	  .then((workout) => {
+	  .then((workout) => { //take this newly updated info and push it into json
 		res.status(200).json(workout);
 	  })
 	  .catch((err) => {
