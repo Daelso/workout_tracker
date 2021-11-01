@@ -1,48 +1,75 @@
-const mongoose = require("mongoose");
+//https://github.com/harishnarain/fitness-tracker/blob/main/models/Workout.js
 
-// Mongoose Schema
+//reviewed his model to get duration working
+
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Create new workout schema
-const WorkoutSchema = new Schema({
-  day: {
-    type: Date,
-    default: Date.now()
+const exerciseSchema = new Schema({
+  type: {
+    type: String,
+    enum: ["resistance", "cardio"],
+    required: "Valid options are 'resistance' or 'cardio'",
   },
-  exercises: [
-    {
-      name : {
-        type : String,
-        trim : true,
-        required : "Please Enter Exercise name"
-      },
-      type : {
-        type: String,
-        trim : true,
-        required : "Please Enter Exercise type"
-      },
-      distance : {
-        type : Number
-      },
-      duration : {
-        type : Number,
-        required : "Please Enter Exercise duration"
-      },
-      weight: {
-        type : Number
-      },
-      sets: {
-        type : Number
-      },
-      reps: {
-        type : Number
-      }
-    }
-  ]
+  name: {
+    type: String,
+    trim: true,
+    required: "Enter a name for the exercise",
+  },
+  duration: {
+    type: Number,
+    required: "Enter the duration minutes",
+  },
+  weight: {
+    type: Number,
+    required: isRequired("weight"),
+  },
+  reps: {
+    type: Number,
+    required: isRequired("reps"),
+  },
+  sets: {
+    type: Number,
+    required: isRequired("sets"),
+  },
+  distance: {
+    type: Number,
+    required: isRequired("distance"),
+  },
 });
 
-// Create mongoose model 'workout' and apply workout schema to that model
-const Workout = mongoose.model("workout", WorkoutSchema);
+function isRequired(field) {
+  return function () {
+    if (field == "distance") {
+      return this.type === "cardio";
+    } else {
+      return this.type === "resistance";
+    }
+  };
+}
 
-// Export workout model
+const workoutSchema = new Schema(
+  {
+    day: {
+      type: Date,
+      default: Date.now,
+    },
+    exercises: [exerciseSchema],
+  },
+  {
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
+  }
+);
+
+workoutSchema.virtual("totalDuration").get(function () {
+  let totalDuration = 0;
+  this.exercises.forEach((el) => {
+    totalDuration += el.duration;
+  });
+  return totalDuration;
+});
+
+const Workout = mongoose.model("Workout", workoutSchema);
+
 module.exports = Workout;
