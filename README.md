@@ -23,7 +23,7 @@ This project was quite difficult at the start as there are many moving parts to 
 
 This requires a number of npm modules. Open the terminal and begin with ```npm init``` followed by ```npm i``` to hopefully automatically install all required dependencies. You will need to deploy your own MongoDB database through Atlas and attach the required env variables to your heroku deployment.
 
-Run the program by opening your terminal in the main folder and typing ```npm start```
+Run the program by opening your terminal in the main folder and typing ```npm start``` - It is recommended you run ```npm run seed``` prior to populate your DB
 
 ## Usage:
 
