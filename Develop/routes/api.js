@@ -4,7 +4,7 @@ const router = require("express").Router();
 
 // GET Request for getting all workouts
 router.get("/api/workouts", async(req, res) => {
-	db.find()
+	db.Workout.find()
 		.then((dbData) => {
 			res.json(dbData);
 		})
@@ -15,7 +15,7 @@ router.get("/api/workouts", async(req, res) => {
 
 // GET request for the stats page.
 router.get("/api/workouts/range", (req, res) => {
-	db.find()
+	db.Workout.find()
 		.then((dbData) => {
 			res.json(dbData);
 		})
