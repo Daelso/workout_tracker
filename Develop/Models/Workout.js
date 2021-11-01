@@ -1,71 +1,48 @@
 const mongoose = require("mongoose");
+
+// Mongoose Schema
 const Schema = mongoose.Schema;
 
-const exerciseSchema = new Schema({
-  type: {
-    type: String,
-    enum: ["resistance", "cardio"], //per the seeds, we've only got resistance and cardio
-    required: "Valid options are 'resistance' or 'cardio'",
+// Create new workout schema
+const WorkoutSchema = new Schema({
+  day: {
+    type: Date,
+    default: Date.now()
   },
-  name: {
-    type: String,
-    trim: true,
-    required: "Enter a name for the exercise",
-  },
-  duration: {
-    type: Number,
-    required: "Enter the duration minutes",
-  },
-  weight: {
-    type: Number,
-    required: isRequired("weight"),
-  },
-  reps: {
-    type: Number,
-    required: isRequired("reps"),
-  },
-  sets: {
-    type: Number,
-    required: isRequired("sets"),
-  },
-  distance: {
-    type: Number,
-    required: isRequired("distance"),
-  },
-});
-
-function isRequired(field) {
-  return function () {
-    if (field == "distance") {
-      return this.type === "cardio";
-    } else {
-      return this.type === "resistance";
+  exercises: [
+    {
+      name : {
+        type : String,
+        trim : true,
+        required : "Please Enter Exercise name"
+      },
+      type : {
+        type: String,
+        trim : true,
+        required : "Please Enter Exercise type"
+      },
+      distance : {
+        type : Number
+      },
+      duration : {
+        type : Number,
+        required : "Please Enter Exercise duration"
+      },
+      weight: {
+        type : Number
+      },
+      sets: {
+        type : Number
+      },
+      reps: {
+        type : Number
+      }
     }
-  };
-}
-
-const workoutSchema = new Schema(
-  {
-    day: {
-      type: Date,
-      default: Date.now,
-    },
-    exercises: [exerciseSchema],
-  },
-  {
-    toObject: { virtuals: true },
-    toJSON: { virtuals: true },
-  }
-);
-
-workoutSchema.virtual("totalDuration").get(function () {
-  let totalDuration = 0;
-  this.exercises.forEach((el) => {
-    totalDuration += el.duration;
-  });
-  return totalDuration;
+  ]
 });
 
-const Workout = mongoose.model("Workout", workoutSchema);
+// Create mongoose model 'workout' and apply workout schema to that model
+const Workout = mongoose.model("workout", WorkoutSchema);
 
+// Export workout model
 module.exports = Workout;

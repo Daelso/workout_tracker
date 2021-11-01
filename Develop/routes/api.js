@@ -2,25 +2,30 @@ const db = require('../models');
 const router = require("express").Router();
 
 
-router.get("/api/workouts", (req, res) => {
-
-    db.Workout.find({}).then(dbWorkout => {
-        // console.log("ALL WORKOUTS");
-        // console.log(dbWorkout);
-        dbWorkout.forEach(workout => {
-            var total = 0;
-            workout.exercises.forEach(e => {
-                total += e.duration;
-            });
-            workout.totalDuration = total;
-
-        });
-
-        res.json(dbWorkout);
-    }).catch(err => {
-        res.json(err);
-    });
+// GET Request for getting all workouts
+router.get("/api/workouts", async(req, res) => {
+	db.find()
+		.then((dbData) => {
+			res.json(dbData);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
 });
+
+// GET request for the stats page.
+router.get("/api/workouts/range", (req, res) => {
+	db.find()
+		.then((dbData) => {
+			res.json(dbData);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
+
+
 
 
 // Export HTML routes
